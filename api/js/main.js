@@ -9,24 +9,24 @@ const domselectors = {
 }
 
 function cards(x) {
-    const rendered = []
-    x.forEach((holiday) => {
-      if (!rendered.includes(holiday.name)) {
-        rendered.push(holiday.name);
-        domselectors.wrapper.insertAdjacentHTML(
-          "afterbegin", 
-          `<div class="card">
-            <div class="card-content">
-              <h2>${holiday.name}</h2> 
-              <p>${holiday.description}</p>
-            </div>
-          </div>`
-        ); 
-      }
-    });
-  
-    console.log("it ran");
-  }
+  const rendered = []
+  x.forEach((holiday) => {
+    if (!rendered.includes(holiday.name)) {
+      rendered.push(holiday.name);
+      domselectors.wrapper.insertAdjacentHTML(
+        "afterbegin", 
+        `<div class="card">
+          <div class="card-content">
+            <h2>${holiday.name}</h2> 
+            <p>${holiday.description}</p>
+          </div>
+        </div>`
+      ); 
+    }
+  });
+
+  console.log("it ran");
+}
 
 
 domselectors.form.addEventListener('submit', function(event) { 
