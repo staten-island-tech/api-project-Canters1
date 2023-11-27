@@ -10,7 +10,7 @@ function error(status){
     602 : "Invalid query parameters.",
     603 : "Authorized Subscription level required."
   }
-  alert(codes[status])
+  alert(`Error code ${status}: ${codes[status]}`)
 }
 
 function nocards(x){
