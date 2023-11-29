@@ -6,6 +6,8 @@ const domselectors = {
   yearinput : document.querySelector("#year"),
   monthinput : document.querySelector("#month"),
   dayinput : document.querySelector("#day"),
+  header : document.querySelector("#header"),
+  next7 : document.querySelector("#next7"),
 }
 
 function cards(x) {
@@ -38,6 +40,17 @@ domselectors.form.addEventListener('submit', function(event) {
     const month = domselectors.monthinput.value
     const day = domselectors.dayinput.value
     filter(year, month, day, cards)
+    domselectors.header.innerHTML=`Holidays in ${year} ${month} ${day}`
 }
     );
+    domselectors.next7.addEventListener('click', function(event) { 
+      event.preventDefault();
+      while (domselectors.wrapper.firstChild) {
+          domselectors.wrapper.removeChild(domselectors.wrapper.lastChild);
+        }
+      today(cards)
+      domselectors.header.innerHTML="Upcoming Holidays"
+  }
+      );
+
 document.addEventListener('DOMContentLoaded', today(cards))

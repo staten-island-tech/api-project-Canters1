@@ -15,10 +15,11 @@ function error(status){
 
 function nocards(x){
   console.log(x)
-  if(x.length==0){
+  if(x.length==null){
     alert("No Holidays Found");
     return;
   }
+  console.log(x.length)
 }
 
 
@@ -92,7 +93,7 @@ function filter(year, month, day, x) {
       const holidays = response.holidays;
       console.log(response)
       nocards(response)
-      console.log(y)
+      console.log("y")
       x(holidays); 
     }
 
@@ -107,7 +108,6 @@ function filter(year, month, day, x) {
     }
     xhr.onload = function() {
       console.log(xhr)
-      console.log(xhr.status)
       if(xhr.status!==200){
         console.log("test")
         error(xhr.status)
