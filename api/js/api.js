@@ -18,13 +18,14 @@ async function error(status) {
 
 function nocards(x) {
   console.log(x);
+  const temp=x.holidays
 
-  if (x.length == null) {
+  if (x.length == 0) {
     alert("No Holidays Found");
   }
-  console.log(x);
+  
 }
-
+const key = "K3FHOYZ9H2DLKXcJNC2C29Fz88JWtGQo"
 
 async function today(x) {
   for (let i = 0; i < 6; i++) {
@@ -36,7 +37,7 @@ async function today(x) {
     const year = currentDate.getFullYear();
 
     try {
-      const response = await fetch(`https://calendarific.com/api/v2/holidays?&api_key=Zo4vVncf5cZqkcGgXsGbwA6NCP0QMlso&country=US&year=${year}&month=${month}&day=${day}`);
+      const response = await fetch(`https://calendarific.com/api/v2/holidays?&api_key=${key}&country=US&year=${year}&month=${month}&day=${day}`);
       if (!response.ok) {
         throw new Error(response.status);
       }
@@ -61,7 +62,7 @@ async function filter(year, month, day, x) {
 
   try {
 
-    const response = await fetch(`https://calendarific.com/api/v2/holidays?&api_key=Zo4vVncf5cZqkcGgXsGbwA6NCP0QMlso&country=US&year=${year}&month=${month}&day=${day}`);
+    const response = await fetch(`https://calendarific.com/api/v2/holidays?&api_key=${key}&country=US&year=${year}&month=${month}&day=${day}`);
 
     if (!response.ok) {
       throw new Error(response.status); 
@@ -69,9 +70,10 @@ async function filter(year, month, day, x) {
       
     const data = await response.json();
     const holidays = data.response.holidays;
-    console.log(holidays)
+    // console.log(holidays)
     if (day === "" && month !== "") {
       if (month < 1 || month > 12) {
+        alert("please enter a value for month between 1 and 12")
         return Promise.reject("please enter a value for month between 1 and 12")
       }
       nocards(data.response);
@@ -83,8 +85,10 @@ async function filter(year, month, day, x) {
 
     } else {
       if (month < 1 || month > 12) {
+        alert("please enter a value for month between 1 and 12");
         return Promise.reject("please enter a value for month between 1 and 12");
       } else if (day < 1 || day > 31) {
+        alert("please enter a day between 1 and 31")
         return Promise.reject("please enter a day between 1 and 31");
       }
 
