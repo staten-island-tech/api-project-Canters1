@@ -44,7 +44,7 @@ async function today(x) {
 
       const data = await response.json();
       const holidays = data.response.holidays; 
-      nocards(data.response);
+      nocards(data.response); 
       x(holidays);
 
     } catch(err) {
